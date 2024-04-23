@@ -14,4 +14,7 @@ Rails.application.routes.draw do
   end
 
   get "admin" => "admin#index"
+  get "categories" => "admin/category#index"
+
+  
 end

@@ -12,8 +12,8 @@ class Admin::CategoryController < AdminController
 
         respond_to do |format|
             if @admin_category.save
-                format.html { redirect_to admin_categories_path, notice: "Category was successfully created." }
-                #format.html { redirect_to admin_category_url(@admin_category), notice: "Category was successfully created." }
+                #format.html { redirect_to admin_categories_path, notice: "Category was successfully created." }
+                format.html { redirect_to admin_show_category_url(@admin_category), notice: "Category was successfully created." }
                 format.json { render :show, status: :created, location: @admin_category }
             else
                 format.html { render :new, status: :unprocessable_entity }
@@ -22,6 +22,17 @@ class Admin::CategoryController < AdminController
         end
     end
 
+    def show
+        @category = Category.find(params[:id])
+    end
+
+    def delete
+        @category = Category.find(params[:id])
+        @category.destroy
+        respond_to do |format|
+            format.html { redirect_to admin_categories_path, notice: "Category was successfully deleted." }
+        end
+    end
 
     private
 

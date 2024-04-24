@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   post "create_category" => "admin/category#create", as: :admin_create_category
   get "show_category/:id" => "admin/category#show", as: :admin_show_category
   delete "delete_category/:id" => "admin/category#delete", as: :admin_delete_category
+  get "edit_category/:id" => "admin/category#edit", as: :admin_edit_category
+  patch "update_category/:id" => "admin/category#update", as: :admin_update_category
 end

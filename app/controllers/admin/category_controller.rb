@@ -34,6 +34,23 @@ class Admin::CategoryController < AdminController
         end
     end
 
+    def edit
+        @admin_category = Category.find(params[:id])
+    end
+
+    def update
+        @admin_category = Category.find(params[:id])
+        respond_to do |format|
+            if @admin_category.update(admin_category_params)
+              format.html { redirect_to admin_show_category_url(@admin_category), notice: "Category was successfully updated." }
+              format.json { render :show, status: :ok, location: @admin_category }
+            else
+              format.html { render :edit, status: :unprocessable_entity }
+              format.json { render json: @admin_category.errors, status: :unprocessable_entity }
+            end
+        end
+    end
+
     private
 
     # Only allow a list of trusted parameters through.

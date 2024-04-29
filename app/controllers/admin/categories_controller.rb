@@ -1,4 +1,4 @@
-class Admin::CategoryController < AdminController
+class Admin::CategoriesController < AdminController
     def index
         @categories = Category.all
     end
@@ -13,7 +13,7 @@ class Admin::CategoryController < AdminController
         respond_to do |format|
             if @admin_category.save
                 #format.html { redirect_to admin_categories_path, notice: "Category was successfully created." }
-                format.html { redirect_to admin_show_category_url(@admin_category), notice: "Category was successfully created." }
+                format.html { redirect_to admin_category_url(@admin_category), notice: "Category was successfully created." }
                 format.json { render :show, status: :created, location: @admin_category }
             else
                 format.html { render :new, status: :unprocessable_entity }
@@ -26,7 +26,7 @@ class Admin::CategoryController < AdminController
         @category = Category.find(params[:id])
     end
 
-    def delete
+    def destroy
         @category = Category.find(params[:id])
         @category.destroy
         respond_to do |format|
@@ -55,6 +55,6 @@ class Admin::CategoryController < AdminController
 
     # Only allow a list of trusted parameters through.
     def admin_category_params
-        params.require(:category).permit(:name, :description)
+        params.require(:category).permit(:name, :description, :image)
       end
 end

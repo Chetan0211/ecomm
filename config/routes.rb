@@ -14,6 +14,11 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    resources :orders
+    get "mark_as_fulfilled/:id" => "orders#mark_as_fulfilled", as: :mark_as_fulfilled
+    resources :products do
+      resources :stocks
+    end
     resources :categories
   end
 

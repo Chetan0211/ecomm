@@ -6,7 +6,7 @@
         <p><b>Name:</b><%= @category.name%></p>
         <p><b>Description:</b><%= @category.description%></p>
 
-        <%= link_to "Delete category", admin_category_path(@category),method: :delete, data: { "turbo-method": :delete }, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+        <%= link_to "Delete category", admin_category_path(@category), data: { "turbo-method": :delete }, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
         <%= link_to "Edit category", edit_admin_category_path(@category), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
         <%= link_to "Back to categories", admin_categories_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     </div>

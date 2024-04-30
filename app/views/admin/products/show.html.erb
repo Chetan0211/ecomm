@@ -1,0 +1,53 @@
+<div class="mx-auto md:w-2/3 w-full flex">
+  <div class="mx-auto">
+    <% if notice.present? %>
+      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+    <% end %>
+    <div id="<%= dom_id @admin_product %>">
+      <p class="my-5">
+        <strong class="block font-medium mb-1">Name:</strong>
+        <%= @admin_product.name %>
+      </p>
+
+      <p class="my-5">
+        <strong class="block font-medium mb-1">Description:</strong>
+        <%= @admin_product.description %>
+      </p>
+
+      <p class="my-5">
+        <strong class="block font-medium mb-1">Price:</strong>
+        <%= @admin_product.price %>
+      </p>
+
+      <p class="my-5">
+        <strong class="block font-medium mb-1">Category:</strong>
+        <%= @admin_product.category_id %>
+      </p>
+
+      <p class="my-5">
+        <strong class="block font-medium mb-1">Active:</strong>
+        <%= @admin_product.active %>
+      </p>
+
+      <div>
+        <%@admin_product.images.each do |img|%>
+          <%=image_tag(img.variant(:thumb))%>
+        <%end%>
+      </div>
+
+      <%= link_to "Show this product", admin_product_stocks_path(@admin_product) %>
+
+      <% if action_name != "show" %>
+        <%= link_to "Show this product", admin_product_path(@admin_product), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+        <%= link_to "Edit this product", edit_admin_product_path(@admin_product), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+        <hr class="mt-6">
+      <% end %>
+    </div>
+
+    <%= link_to "Edit this admin_product", edit_admin_product_path(@admin_product), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <div class="inline-block ml-2">
+      <%= button_to "Destroy this admin_product", admin_product_path(@admin_product), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    </div>
+    <%= link_to "Back to admin_products", admin_products_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  </div>
+</div>
